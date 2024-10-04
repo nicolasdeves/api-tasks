@@ -32,7 +32,10 @@ export const routes = [
             const task = ({
                 id: randomUUID(),
                 title,
-                description
+                description,
+                completed_at: null,
+                created_at: getCurrentDate(),
+                updated_at: null
             })
             
             database.insert('tasks', task)
@@ -63,9 +66,37 @@ export const routes = [
             const { id } = req.params
             const { title, description } = req.body
 
+            const data = database.select('tasks').find(task => task.id === id)
+
             database.update('tasks', id, {
                 title,
-                description
+                description,
+                completed_at: data.completed_at,
+                created_at: data.created_at,
+                updated_at: getCurrentDate()
+            })
+            res
+                .writeHead(204)
+                .end()
+        }
+    },
+    {
+        method: 'PATCH',
+        path: buildRoutePath('/tasks/:id/completed'),
+        handler: (req, res) => {
+
+            const { id } = req.params
+
+            const data = database.select('tasks').find(task => task.id === id)
+
+            console.log(data),
+
+            database.update('tasks', id, {
+                title: data.title,
+                description: data.description,
+                completed_at: !data.completed_at ? getCurrentDate() : null,
+                created_at: data.created_at,
+                updated_at: data.updated_at
             })
             res
                 .writeHead(204)
@@ -74,3 +105,17 @@ export const routes = [
     },
 
 ]
+
+const getCurrentDate = () => {
+    const dateNow = new Date().toLocaleString("pt-BR", {
+        timeZone: "America/Sao_Paulo",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false,
+      });
+      return dateNow;
+}
