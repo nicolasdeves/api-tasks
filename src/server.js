@@ -23,8 +23,6 @@ const server = http.createServer(async (req, res) => {
         buffers.push(chunk)
     }
 
-    // console.log(buffers)
-
     try {
         req.body = JSON.parse(Buffer.concat(buffers).toString()) //A função Buffer.concat() é um método que aceita um array de Buffers e concatena todos eles em um único Buffer
 
@@ -46,7 +44,6 @@ const server = http.createServer(async (req, res) => {
         return route.handler(req, res)
     }
 
-    console.log(route)
 
     return res.writeHead(404).end()
 })
