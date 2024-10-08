@@ -2,7 +2,9 @@
 
 Criação de API sem utilização de frameworks, somente JavaScript
 
-API com utilização de streams
+- API de tasks
 
-### Iniciar projeto node
-npm init -y
+- API com utilização de streams para leitura de csv
+
+### Instalação necessária
+npm install csv-parse
