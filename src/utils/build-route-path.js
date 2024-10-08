@@ -6,5 +6,4 @@ export function buildRoutePath(path) {
     const pathRegex = new RegExp(`^${pathWithParams}`) //cria uma expressão regular que começa e termina com o texto da variável pathWithParams
 
     return pathRegex
-    console.log(Array.from(path.matchAll(routeRegex))) //matchAll() => usado para encontrar todas as correspondências de uma expressão regular em uma string
 }

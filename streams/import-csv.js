@@ -13,8 +13,6 @@ const csvParse = parse({ //cria uma instância do parser de CSV configurada com 
 
 export async function importCSV() {
 
-    console.log("ENTROU NO IMPORT CSV")
-
     const linesParsed = stream.pipe(csvParse) //o stream de leitura é conectado ao parser de CSV, que vai transformar os dados em linhas de objetos
 
     for await (const line of linesParsed) {

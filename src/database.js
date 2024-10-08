@@ -38,7 +38,6 @@ export class Database {
     } 
     
     delete (table, id) {
-        console.log('IDDD', id)
         const rowIndex = this.#database[table].findIndex(row => row.id === id) // retorna o índice do primeiro elemento de um array que satisfaça a função de teste fornecida. Caso contrário, retorna -1.
 
         if (rowIndex > -1) {
@@ -48,7 +47,6 @@ export class Database {
     }
 
     update (table, id, data) {
-        console.log('IDDD', id)
         const rowIndex = this.#database[table].findIndex(row => row.id === id) // retorna o índice do primeiro elemento de um array que satisfaça a função de teste fornecida. Caso contrário, retorna -1.
 
         if (rowIndex > -1) {

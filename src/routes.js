@@ -102,8 +102,6 @@ export const routes = [
 
             const data = database.select('tasks').find(task => task.id === id)
 
-            console.log(data),
-
             database.update('tasks', id, {
                 title: data.title,
                 description: data.description,

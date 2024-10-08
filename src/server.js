@@ -14,9 +14,6 @@ const server = http.createServer(async (req, res) => {
 
     const { method, url } = req
 
-    // console.log(method)
-    // console.log(url)
-
     const buffers = []
 
     for await (const chunk of req) {
