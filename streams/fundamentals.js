@@ -4,6 +4,14 @@ process.stdin //leitura
 
 */
 
+/*
+
+EXEMPLO DE STREAMS
+NÃO É USADO NA API, FINALIDADE DE ENTENDIMENTO
+
+
+*/
+
 import { Readable, Writable, Transform } from 'node:stream'
 
 class OneToHundredStream extends Readable {
